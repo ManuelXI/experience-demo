@@ -1,42 +1,282 @@
-#root {
-  max-width: 1280px;
+/* Casino / Baby Keem vibe: deep reds, gold, dark lounge */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+.album-page {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  --casino-black: #0c0a09;
+  --casino-red: #7f1d1d;
+  --casino-red-light: #991b1b;
+  --casino-burnt: #9a3412;
+  --casino-gold: #ca8a04;
+  --casino-gold-bright: #eab308;
+  --casino-cream: #fef3c7;
+  --casino-muted: #a8a29e;
+  background: var(--casino-black);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(127, 29, 29, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgba(154, 52, 18, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(127, 29, 29, 0.1) 0%, transparent 50%);
+  color: #fafafa;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Hero Section */
+.album-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  padding: 2rem 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.album-hero-content {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.album-artwork-container {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.album-artwork-container::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1px solid rgba(202, 138, 4, 0.35);
+  border-radius: 14px;
+  pointer-events: none;
+}
+
+.album-artwork {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.album-info {
+  flex: 1;
+  text-align: left;
+}
+
+.album-tagline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--casino-gold);
+  margin: 0 0 0.5rem 0;
+}
+
+.album-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.25rem 0;
+  background: linear-gradient(180deg, var(--casino-gold-bright) 0%, var(--casino-gold) 50%, #a16207 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 0.95;
+}
+
+.artist-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--casino-muted);
+  margin: 0 0 0.75rem 0;
+  letter-spacing: 0.02em;
+}
+
+.album-meta {
+  font-size: 0.95rem;
+  color: var(--casino-muted);
+  margin: 0 0 1.25rem 0;
+}
+
+.album-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d6d3d1;
+  margin: 0;
+}
+
+/* Tracklist Section */
+.tracklist-section {
+  margin-bottom: 3.5rem;
+  text-align: left;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--casino-gold);
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(202, 138, 4, 0.4);
+  border-radius: 4px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  margin: 0 0 1rem 0;
+  color: #fafafa;
+}
+
+.section-intro {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #a8a29e;
+  margin: 0 0 1.5rem 0;
+  max-width: 56ch;
+}
+
+.tracklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.5rem;
+}
+
+.track {
+  padding: 0.7rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid transparent;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #e7e5e4;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.track:hover {
+  background: rgba(127, 29, 29, 0.2);
+  border-left-color: var(--casino-gold);
+}
+
+.monterosa-experience-container iframe {
+  min-height: 600px !important;
+}
+
+/* Experiences intro */
+.experiences-intro {
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 1.25rem;
+  background: linear-gradient(135deg, rgba(127, 29, 29, 0.2) 0%, rgba(30, 27, 25, 0.6) 100%);
+  border: 1px solid rgba(202, 138, 4, 0.2);
+  border-radius: 10px;
+}
+
+.experiences-intro p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--casino-cream);
+  font-style: italic;
+}
+
+/* Experience Sections */
+.experience-section {
+  margin-bottom: 3rem;
+  padding: 2rem 1.75rem;
+  background: rgba(30, 27, 25, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-section::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--casino-red) 0%, var(--casino-burnt) 100%);
+  opacity: 0.8;
+}
+
+.experience-section--gold::before {
+  background: linear-gradient(180deg, var(--casino-gold) 0%, var(--casino-burnt) 100%);
+  opacity: 0.9;
+}
+
+.experience-section--red::before {
+  background: linear-gradient(180deg, var(--casino-red-light) 0%, var(--casino-red) 100%);
+  opacity: 0.9;
+}
+
+.experience-section .section-title {
+  margin-top: 0.25rem;
+}
+
+.experience-description {
+  font-size: 0.95rem;
+  color: var(--casino-muted);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .album-page {
+    padding: 1.25rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .album-hero-content {
+    flex-direction: column;
+    gap: 1.5rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .album-artwork {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    aspect-ratio: 1;
+    margin: 0 auto;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .album-artwork-container {
+    margin: 0 auto;
+  }
 
-.read-the-docs {
-  color: #888;
+  .album-tagline {
+    text-align: center;
+  }
+
+  .album-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .artist-name,
+  .album-info {
+    text-align: center;
+  }
+
+  .tracklist {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-section {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .section-intro {
+    max-width: none;
+  }
 }
